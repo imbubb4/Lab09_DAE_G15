@@ -1,3 +1,6 @@
+import CabeceraComponent from "./components/CabeceraComponent";
+import MenuComponent from "./components/MenuComponent";
+import FooterComponent from "./components/FooterComponent";
 import SerieComponent from "./components/SerieComponent";
 
 function App() {
@@ -11,21 +14,28 @@ function App() {
   ];
 
   return (
-    <div className="container mt-3">
-      <h1 className="border-bottom pb-3 mb-3">Series</h1>
-      <div className="row">
-        {series.map((serie) => (
-          <div key={serie.cod} className="col-md-4 mb-3">
-            <SerieComponent
-              codigo={serie.cod}
-              nombre={serie.nom}
-              categoria={serie.cat}
-              imagen={serie.img}
-            />
-          </div>
-        ))}
+    <>
+      <CabeceraComponent />
+      <MenuComponent />
+
+      <div className="container mt-3">
+        <h1 className="border-bottom pb-3 mb-3">Series</h1>
+        <div className="row">
+          {series.map((serie) => (
+            <div key={serie.cod} className="col-md-4 mb-3">
+              <SerieComponent
+                codigo={serie.cod}
+                nombre={serie.nom}
+                categoria={serie.cat}
+                imagen={serie.img}
+              />
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+
+      <FooterComponent />
+    </>
   );
 }
 

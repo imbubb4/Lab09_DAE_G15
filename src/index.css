@@ -1,0 +1,6 @@
+/* Puedes poner esto en App.css o index.css */
+.card:hover {
+  transform: scale(1.03);
+  transition: transform 0.3s ease;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}

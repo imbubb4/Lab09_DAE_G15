@@ -1,9 +1,16 @@
+import { useState } from "react";
 import CabeceraComponent from "./components/CabeceraComponent";
 import MenuComponent from "./components/MenuComponent";
 import FooterComponent from "./components/FooterComponent";
 import SerieComponent from "./components/SerieComponent";
 
 function App() {
+  const [theme, setTheme] = useState("light");
+
+  const toggleTheme = () => {
+    setTheme(prev => (prev === "light" ? "dark" : "light"));
+  };
+
   const series = [
     { cod: 1, nom: "Friends", cat: "Comedy", img: "friends.png" },
     { cod: 2, nom: "Law & Order", cat: "Drama", img: "law-and-order.png" },
@@ -14,10 +21,9 @@ function App() {
   ];
 
   return (
-    <>
+    <div className={theme === "dark" ? "bg-dark text-light min-vh-100" : "bg-light text-dark min-vh-100"}>
       <CabeceraComponent />
-      <MenuComponent />
-
+      <MenuComponent toggleTheme={toggleTheme} theme={theme} />
       <div className="container mt-3">
         <h1 className="border-bottom pb-3 mb-3">Series</h1>
         <div className="row">
@@ -33,9 +39,8 @@ function App() {
           ))}
         </div>
       </div>
-
       <FooterComponent />
-    </>
+    </div>
   );
 }
 
